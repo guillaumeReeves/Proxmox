@@ -70,6 +70,9 @@ if [[ ${prompt,,} =~ ^(y|yes)$ ]]; then
   curl -sSL https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_LATEST_VERSION/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
   chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
   msg_ok "Installed Docker Compose $DOCKER_COMPOSE_LATEST_VERSION"
+
+  touch $DOCKER_CONFIG/this_is_a_test_file
+  
 fi
 
 motd_ssh
