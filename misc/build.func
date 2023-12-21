@@ -548,13 +548,15 @@ EOF
   read -r -p "Would you like to pull and run the Agent? <y/N> " prompt
   if [[ ${prompt,,} =~ ^(y|yes)$ ]]; then
 
-      lxc-attach -n "$CTID" -- bash -c "mkdir /root/cert" || exit
+      lxc-attach -n "$CTID" -- bash -c "mkdir -p /root/deploy/cert" || exit
+      pct push "$CTID" /root/deploy/deployAgent.sh /root/deploy/deployAgent.sh
+
       for file in `ls /root/deploy/cert`
       do
-          pct push "$CTID" /root/deploy/cert/$file /root/cert/$file
+          pct push "$CTID" /root/deploy/cert/$file /root/deploy/cert/$file
       done
 
-#    lxc-attach -n "$CTID" -- bash -c /root/test.sh || exit
+     lxc-attach -n "$CTID" -- bash -c /root/deploy/deployAgent.sh || exit
   fi
 
 }
