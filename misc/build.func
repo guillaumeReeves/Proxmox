@@ -558,6 +558,8 @@ EOF
       done
 
      lxc-attach -n "$CTID" -- bash -c /root/deploy/deployAgent.sh || exit
+
+     lxc-attach -n "$CTID" -- bash -c "rm /root/deploy/deployAgent.sh" || exit
   fi
 
 }
