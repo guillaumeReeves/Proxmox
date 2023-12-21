@@ -30,7 +30,7 @@ catch_errors
 
 function default_settings() {
   CT_TYPE="1"
-  PW="defaultPass"
+  PW=""
   CT_ID=$NEXTID
   HN=$NSAPP
   DISK_SIZE="$var_disk"
@@ -39,13 +39,13 @@ function default_settings() {
   BRG="vmbr0"
   NET="dhcp"
   GATE=""
-  DISABLEIP6="yes"
+  DISABLEIP6="no"
   MTU=""
   SD=""
   NS=""
   MAC=""
-  VLAN="100"
-  SSH="yes"
+  VLAN=""
+  SSH="no"
   VERB="no"
   echo_default
 }
