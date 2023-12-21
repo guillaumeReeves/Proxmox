@@ -13,6 +13,8 @@ setting_up_container
 network_check
 update_os
 
+agentDeploy=/root/test.sh
+
 msg_info "Installing Dependencies"
 $STD apt-get install -y curl
 $STD apt-get install -y sudo
@@ -70,10 +72,13 @@ if [[ ${prompt,,} =~ ^(y|yes)$ ]]; then
   curl -sSL https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_LATEST_VERSION/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
   chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
   msg_ok "Installed Docker Compose $DOCKER_COMPOSE_LATEST_VERSION"
-
-  touch $DOCKER_CONFIG/this_is_a_test_file
-  
 fi
+
+read -r -p "Would you like to pull and run Agent? <y/N> " prompt
+if [[ ${prompt,,} =~ ^(y|yes)$ ]]; then
+  bash $agentDeploy
+fi
+
 
 motd_ssh
 customize
