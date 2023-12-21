@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source <(curl -s https://raw.githubusercontent.com/tteck/Proxmox/main/misc/build.func)
+source <(curl -s https://raw.githubusercontent.com/guillaumereeves/Proxmox/main/misc/build.func)
 # Copyright (c) 2021-2023 tteck
 # Author: tteck (tteckster)
 # License: MIT
@@ -19,18 +19,18 @@ EOF
 header_info
 echo -e "Loading..."
 APP="Docker"
-var_disk="4"
-var_cpu="2"
-var_ram="2048"
-var_os="debian"
-var_version="12"
+var_disk="20"
+var_cpu="8"
+var_ram="8192"
+var_os="ubuntu"
+var_version="22.04"
 variables
 color
 catch_errors
 
 function default_settings() {
   CT_TYPE="1"
-  PW=""
+  PW="defaultPass"
   CT_ID=$NEXTID
   HN=$NSAPP
   DISK_SIZE="$var_disk"
@@ -39,13 +39,13 @@ function default_settings() {
   BRG="vmbr0"
   NET="dhcp"
   GATE=""
-  DISABLEIP6="no"
+  DISABLEIP6="yes"
   MTU=""
   SD=""
   NS=""
   MAC=""
-  VLAN=""
-  SSH="no"
+  VLAN="100"
+  SSH="yes"
   VERB="no"
   echo_default
 }
